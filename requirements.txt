@@ -1,0 +1,6 @@
+streamlit==1.0.0
+tensorflow==2.3.4
+transformers==4.11.2
+numpy==1.18.5
+pyarrow==5.0.0
+datasets==1.12.1
