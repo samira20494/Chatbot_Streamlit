@@ -9,8 +9,8 @@ from pathlib import Path
 
 @st.cache(allow_output_mutation=True)
 def instantiate_model():
-    tokenizer = AutoTokenizer.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
-    model = TFAutoModelForQuestionAnswering.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
+    tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+    model = TFAutoModelForQuestionAnswering.from_pretrained("distilbert-base-uncased")
 
     return tokenizer, model
 
