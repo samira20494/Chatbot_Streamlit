@@ -1,6 +1,4 @@
 import streamlit as st
-from transformers import pipeline, set_seed
-from transformers.pipelines import TextGenerationPipeline
 import tensorflow as tf
 from transformers import TFAutoModelForQuestionAnswering
 from transformers import AutoTokenizer
@@ -11,10 +9,11 @@ from pathlib import Path
 
 @st.cache(allow_output_mutation=True)
 def instantiate_model():
-    tokenizer = AutoTokenizer.from_pretrained("mrm8488/bert-small-finetuned-squadv2")
-    model = TFAutoModelForQuestionAnswering.from_pretrained("mrm8488/bert-small-finetuned-squadv2")
+    tokenizer = AutoTokenizer.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
+    model = TFAutoModelForQuestionAnswering.from_pretrained("bert-large-uncased-whole-word-masking-finetuned-squad")
 
     return tokenizer, model
+
 
 def load_context_for_inference(path):
     path = Path(path)
@@ -54,5 +53,6 @@ if __name__ == '__main__':
         start = answer.index("SEP") + 4
         answer = answer[start:-5]
         st.markdown(f'Answer is: {answer}')
+    # st.markdown('Answer is empty for now!')
 
 
